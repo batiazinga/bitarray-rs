@@ -1,10 +1,13 @@
-//! The 'bitarray' crate provides two-dimensional arrays of single bit booleans.
+//! The `bitarray` crate provides two-dimensional arrays of single bit booleans.
 //!
 //! # Example:
 //!
 //! ```
-//! let mut a = bitarray::Array::new(2, 3);
+//! use bitarray::Array;
+//!
+//! let mut a = Array::new(2, 3);
 //! a.set(1, 2, true);
+//!
 //! assert_eq!(false, a.get(0, 0));
 //! assert_eq!(true, a.get(1, 2));
 //! ```
@@ -12,6 +15,7 @@
 #![feature(test)]
 extern crate test;
 
+/// A two-dimensional array of single-bit booleans.
 pub struct Array {
     n_rows: usize,
     n_columns: usize,
@@ -19,7 +23,8 @@ pub struct Array {
 }
 
 impl Array {
-    // Static method to create a new array.
+    /// Constructs a new `Array`.
+    ///
     // The array is initially full of 'false'.
     pub fn new(n_rows: usize, n_columns: usize) -> Array {
         // compute size of the array's content
@@ -37,7 +42,7 @@ impl Array {
         }
     }
 
-    // read the bit-boolean at position (i,j)
+    /// Reads the bit-boolean at position `(i,j)`.
     pub fn get(&self, i: usize, j: usize) -> bool {
         // check
         if i >= self.n_rows || j >= self.n_columns {
@@ -51,7 +56,7 @@ impl Array {
         self.content[index] & (1 << bit) != 0
     }
 
-    // set the value of the bit-boolean at postition (i,j)
+    /// Sets the value of the bit-boolean at postition `(i,j)`.
     pub fn set(&mut self, i: usize, j: usize, val: bool) {
         // check
         if i >= self.n_rows || j >= self.n_columns {

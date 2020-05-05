@@ -1,7 +1,7 @@
 #![feature(test)]
 extern crate test;
 
-use bitarray;
+use bitarray::Array;
 use test::{black_box, Bencher};
 
 #[bench]
@@ -9,7 +9,7 @@ fn bench_get_all(b: &mut Bencher) {
     // init
     let m = 500usize;
     let n = 100usize;
-    let a = bitarray::Array::new(m, n);
+    let a = Array::new(m, n);
     // iterate
     b.iter(|| {
         for i in 0..m {
@@ -27,7 +27,7 @@ fn bench_get_single(b: &mut Bencher) {
     let n = 100usize;
     let i = 250usize;
     let j = 50usize;
-    let a = bitarray::Array::new(m, n);
+    let a = Array::new(m, n);
     // iterate
     b.iter(|| {
         black_box(a.get(i, j));
@@ -39,7 +39,7 @@ fn bench_set_all(b: &mut Bencher) {
     // init
     let m = 500usize;
     let n = 100usize;
-    let mut a = bitarray::Array::new(m, n);
+    let mut a = Array::new(m, n);
     // iterate
     b.iter(|| {
         for i in 0..m {
@@ -57,7 +57,7 @@ fn bench_set_single(b: &mut Bencher) {
     let n = 100usize;
     let i = 250usize;
     let j = 50usize;
-    let mut a = bitarray::Array::new(m, n);
+    let mut a = Array::new(m, n);
     // iterate
     b.iter(|| {
         a.set(i, j, true);
