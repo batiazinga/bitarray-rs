@@ -12,8 +12,8 @@
 //! assert_eq!(true, a.get(1, 2));
 //! ```
 
-#![feature(test)]
-extern crate test;
+// #![feature(test)]
+// extern crate test;
 
 /// A two-dimensional array of single-bit booleans.
 pub struct Array {
@@ -25,7 +25,7 @@ pub struct Array {
 impl Array {
     /// Constructs a new `Array`.
     ///
-    // The array is initially full of 'false'.
+    // The array is initially full of `false`.
     pub fn new(n_rows: usize, n_columns: usize) -> Array {
         // compute size of the array's content
         let full_size = n_rows * n_columns;
